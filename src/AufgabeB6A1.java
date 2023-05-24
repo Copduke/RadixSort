@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class AufgabeB6A1 {
@@ -38,18 +37,16 @@ public class AufgabeB6A1 {
             }
         }
 
-        System.out.println(Arrays.toString(freq));
-
         for (int i = r; i >= l; i--) {
             temp = (data[i] >> (8*b)) & 0xFF;
             freq[temp]--;
             help[freq[temp]] = data[i];
         }
 
-        System.out.println(Arrays.toString(help));
-
+        int count = 0;
         for (int i = l; i <= r; i++) {
-            data[i] = help[i];
+            data[i] = help[count];
+            count++;
         }
     }
 
@@ -57,5 +54,15 @@ public class AufgabeB6A1 {
         for (int i = 0; i < 4; i++) {
             sortByByte(0, data.length-1,i);
         }
+    }
+
+    public void msdRadix(int l, int r, int b) {
+
+    }
+
+    public static void main(String[] args) {
+        int[] freq = {2, 7, 9, 3, 5, 270};
+        AufgabeB6A1 test = new AufgabeB6A1(freq);
+        test.lsdRadix();
     }
 }
